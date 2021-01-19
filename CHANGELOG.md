@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.5.0](https://www.github.com/jef/streetmerchant/compare/v3.4.1...v3.5.0) (2021-01-19)
+
+
+### Features
+
+* **store:** corsair-uk ([#1733](https://www.github.com/jef/streetmerchant/issues/1733)) ([c81282e](https://www.github.com/jef/streetmerchant/commit/c81282ef9fd95c39dc6d338f3d79de16906c89b6))
+
+
+### Bug Fixes
+
+* **vuugo:** add out of stock check ([#1731](https://www.github.com/jef/streetmerchant/issues/1731)) ([9695e29](https://www.github.com/jef/streetmerchant/commit/9695e29a02ea320842954db9f2ea51612b983490))
+
 ### [3.4.1](https://www.github.com/jef/streetmerchant/compare/v3.4.0...v3.4.1) (2021-01-17)
 
 
