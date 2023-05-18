@@ -1,6 +1,6 @@
 import {Store} from './store';
 
-export const BambuLabUS: Store = {
+export const BambuLabUs: Store = {
   currency: '$',
   labels: {
     inStock: {
@@ -21,5 +21,5 @@ export const BambuLabUS: Store = {
       url: 'https://us.store.bambulab.com/products/pla-basic-filament?variant=41078274687112',
     },
   ],
-  name: 'BambuLabUS',
+  name: 'BambuLabUs',
 };
