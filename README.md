@@ -1,31 +1,15 @@
 <p align="center">
-  <a href="https://jef.codes/streetmerchant"
-    ><img
-      src="https://raw.githubusercontent.com/jef/streetmerchant/main/docs/assets/images/streetmerchant-banner.png"
-      alt="streetmerchant"
-  /></a>
+  <a href="https://jef.buzz/streetmerchant"><img src="https://raw.githubusercontent.com/jef/streetmerchant/main/docs/assets/images/streetmerchant-banner.png" /></a>
 </p>
 <p align="center">
   <strong>The world's easiest, most powerful stock checker</strong>
 </p>
 <p align="center">
-  <a href="https://github.com/jef/streetmerchant/actions?query=workflow%3ARelease"
-    ><img src="https://github.com/jef/streetmerchant/workflows/Release/badge.svg"
-  /></a>
-  <a href="https://discord.gg/gbVY4vB9JF"
-    ><img
-      src="https://img.shields.io/discord/773913070665859073.svg?label=chat&logo=discord&logoColor=ffffff&color=7389D8"
-      alt="Tweet"
-  /></a>
-  <a
-    href="https://twitter.com/intent/tweet?text=Beat%20the%20masses%20with%20streetmerchant&url=https://github.com/jef/streetmerchant&hashtags=typescript,opensource,bot,shopping"
-    ><img
-      src="https://img.shields.io/badge/twitter-share-green?logo=twitter&style=social"
-      alt="Tweet"
-  /></a>
+  <a href="https://github.com/jef/streetmerchant/actions/workflows/ci.yaml"><img src="https://img.shields.io/github/actions/workflow/status/jef/streetmerchant/ci.yaml?branch=main&label=Continuous%20Integration&logo=github&logoColor=white" /></a>
+  <a href="https://discord.gg/gbVY4vB9JF"><img src="https://img.shields.io/discord/773913070665859073?label=Discord&logo=discord&logoColor=white" /></a>
 </p>
 <p align="center">
-  <em>To get started, visit <a href="https://jef.codes/streetmerchant">jef.codes/streetmerchant</a></em>
+  <em>To get started, visit <a href="https://jef.buzz/streetmerchant">jef.buzz/streetmerchant</a></em>
 </p>
 
 ## Features
@@ -38,11 +22,11 @@ First and foremost, this service _will not_ automatically buy for you.
 
 ## Quick start
 
-streetmerchant runs on Node.js 14:
+streetmerchant runs on Node.js:
 
 ```shell
 git clone https://github.com/jef/streetmerchant.git
 cd streetmerchant && npm i && npm run start
 ```
 
-For more information and customization, visit [jef.codes/streetmerchant/getting-started](https://jef.codes/streetmerchant/getting-started).
+For more information and customization, visit [jef.buzz/streetmerchant/getting-started](https://jef.buzz/streetmerchant/getting-started).

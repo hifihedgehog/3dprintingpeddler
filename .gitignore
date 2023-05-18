@@ -9,6 +9,7 @@ node_modules/
 dotenv
 *.proxies
 success-*.png
+screenshots/
 
 *.wav
 *.mp3
@@ -17,3 +18,5 @@ success-*.png
 desktop.ini
 
 twitch.json
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup

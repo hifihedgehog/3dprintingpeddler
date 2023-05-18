@@ -18,7 +18,9 @@
 | `PROXY_PROTOCOL` | Protocol of proxy server, such as `socks5`. Default: `http` |
 | `PROXY_ADDRESS` | IP Address or fqdn of proxy server |
 | `PROXY_PORT` | TCP Port number on which the proxy is listening for connections. Default: `80` |
+| `RESTART_TIME` | Restarts chrome after defined milliseconds. `0` for never, default: `0` |
 | `SCREENSHOT` | Capture screenshot of page if a card is found. Default: `true` |
+| `SCREENSHOT_DIR` | The directory for saving the screenshots. Default: `screenshots` |
 | `WEB_PORT` | Starts a webserver to be able to control the bot while it is running. Setting this value starts this service. |
 
 ???+ info

@@ -2,6 +2,20 @@
 
 You can test your notification configuration by running `npm run test:notification`.
 
+## Apple Push Notification Service
+
+| Environment variable | Description |
+|---|---|
+| `APNS_AUTHKEY` | Path to authkey on users machine |
+| `APNS_BUNDLEID` | iOS app bundle id |
+| `APNS_DEVICETOKEN` | iOS device token|
+| `APNS_KEYID` | Apple developer's key id |
+| `APNS_PRODUCTION` | true/false for production |
+| `APNS_TEAMID` | Apple developer's team id |
+
+Change your notification alert/payload/etc in apns.ts in the note object.
+Refer to https://github.com/node-apn/node-apn for config options.
+
 ## Desktop
 
 | Environment variable | Description |
@@ -18,10 +32,15 @@ You can test your notification configuration by running `npm run test:notificati
 | Environment variable | Description |
 |:---:|---|
 | `DISCORD_NOTIFY_GROUP` | Discord group you would like to notify |
+| `DISCORD_NOTIFY_GROUP_3060` | Discord group to notify on 3060 stock |
 | `DISCORD_NOTIFY_GROUP_3060TI` | Discord group to notify on 3060 Ti stock |
 | `DISCORD_NOTIFY_GROUP_3070` | Discord group to notify on 3070 stock |
 | `DISCORD_NOTIFY_GROUP_3080` | Discord group to notify on 3080 stock |
+| `DISCORD_NOTIFY_GROUP_3080TI` | Discord group to notify on 3080 Ti stock |
 | `DISCORD_NOTIFY_GROUP_3090` | Discord group to notify on 3090 stock |
+| `DISCORD_NOTIFY_GROUP_4080_12G` | Discord group to notify on 4080 12G stock |
+| `DISCORD_NOTIFY_GROUP_4080_16G` | Discord group to notify on 4080 16G stock |
+| `DISCORD_NOTIFY_GROUP_4090` | Discord group to notify on 4090 stock |
 | `DISCORD_NOTIFY_GROUP_RYZEN5600` | Discord group to notify on 5600X stock |
 | `DISCORD_NOTIFY_GROUP_RYZEN5800` | Discord group to notify on 5800X stock |
 | `DISCORD_NOTIFY_GROUP_RYZEN5900` | Discord group to notify on 5900X stock |
@@ -73,10 +92,19 @@ Default provider is Gmail. If you use a different email provider, you must provi
 | Sprint | `sprint`|
 | Telus | `telus`|
 | T-Mobile | `tmobile`|
+| USCC | `uscc`|
 | Verizon | `verizon`|
 | Virgin | `virgin`|
 | Virgin (CA) | `virgin-ca`|
 | Visible | `visible`|
+
+## Gotify
+
+| Environment variable | Description |
+|:---:|---|
+| `GOTIFY_PRIORITY` | Message Priority |
+| `GOTIFY_TOKEN` | Application token |
+| `GOTIFY_URL` | Gotify's URL, e.g. `https://push.example.com` |
 
 ## MQTT
 
@@ -131,13 +159,17 @@ Generate token at [pushbullet.com/#settings/account](https://pushbullet.com/#set
 
 Generate token at [pushover.net/apps/build](https://pushover.net/apps/build).
 
-| Environment variable | Description |
-|:---:|---|
-| `PUSHOVER_EXPIRE` | How many seconds your notification will continue to be retried for (every `PUSHOVER_RETRY` seconds) |
-| `PUSHOVER_RETRY` | How often (in seconds) the Pushover servers will send the same notification to the user |
-| `PUSHOVER_PRIORITY` | Message priority |
-| `PUSHOVER_TOKEN` | API token |
-| `PUSHOVER_USER` | Username |
+API Documentation: [pushover.net/api](https://pushover.net/api)
+
+| Environment variable | Description | Required
+|:---:|---|---|
+| `PUSHOVER_EXPIRE` | How many seconds your notification will continue to be retried for (every `PUSHOVER_RETRY` seconds) | false |
+| `PUSHOVER_DEVICE` | Devices to send notificaiton to. Blank will send to all registered devices. | false |
+| `PUSHOVER_PRIORITY` | Message priority | false |
+| `PUSHOVER_RETRY` | How often (in seconds) the Pushover servers will send the same notification to the user | false |
+| `PUSHOVER_SOUND` | Message sound |
+| `PUSHOVER_TOKEN` | Application API token | true |
+| `PUSHOVER_USER` | User key | true |
 
 ???+ note
     `PUSHOVER_EXPIRE` and `PUSHOVER_RETRY` are only used when `PUSHOVER_PRIORITY="2"`
@@ -199,3 +231,30 @@ Instructions on how to set up tokens can be found at [d-fischer.github.io/twitch
 | `TWITCH_ACCESS_TOKEN` | Twitch access token |
 | `TWITCH_REFRESH_TOKEN` | Twitch refresh token |
 | `TWITCH_CHANNEL` | Twitch channel |
+
+## StreamLabs
+
+Instructions on how to set up tokens can be found at [dev.streamlabs.com](https://dev.streamlabs.com/docs/register-your-application).
+You don't need to submit your application for review, just whitelist yourself!
+
+| Environment variable | Description |
+|:---:|---|
+| `STREAMLABS_ACCESS_TOKEN` | StreamLabs access token |
+| `STREAMLABS_TYPE` | StreamLabs alert type |
+| `STREAMLABS_IMAGE`| Custom image to display. Leave it blank for default |
+| `STREAMLABS_SOUND` | Custom image to play. Leave it blank for default |
+| `STREAMLABS_DURATION` | StreamLabs alert duration (in milliseconds) |
+
+## Free mobile SMS notifications API
+
+For the customers of Free carrier.
+
+Activate the notification service at mobile.free.fr/account/mes-options (option "Notifications par SMS").
+Copy the API key generated with the service activation.
+
+| Environment variable | Description |
+|:---:|---|
+| `FREEMOBILE_ID` | User ID to log into mobile.free.fr |
+| `FREEMOBILE_API_KEY` | API key generated with your notification option activation |
+
+Note: here you do not need to give neither your password nor phone number.

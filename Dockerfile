@@ -1,6 +1,8 @@
-FROM node:14.15.4-alpine3.12 AS builder
+FROM node:16.18.0-alpine3.16 AS builder
 
 LABEL org.opencontainers.image.source="https://github.com/jef/streetmerchant"
+LABEL org.opencontainers.image.description="The world's easiest, most powerful stock checker"
+LABEL org.opencontainers.image.licenses="MIT"
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 
@@ -12,10 +14,11 @@ COPY tsconfig.json tsconfig.json
 RUN npm ci
 
 COPY src/ src/
+COPY test/ test/
 RUN npm run compile
 RUN npm prune --production
 
-FROM node:14.15.4-alpine3.12
+FROM node:16.18.0-alpine3.16
 
 RUN apk add --no-cache chromium
 
@@ -35,7 +38,6 @@ COPY --from=builder /build/node_modules/ node_modules/
 COPY --from=builder /build/build/ build/
 COPY web/ web/
 COPY package.json package.json
-COPY version.txt version.txt
 
 ENTRYPOINT ["npm", "run"]
 CMD ["start:production"]

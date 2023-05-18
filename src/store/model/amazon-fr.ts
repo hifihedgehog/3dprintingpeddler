@@ -8,12 +8,17 @@ export const AmazonFr: Store = {
       container: 'body',
       text: ['entrez les caractères que vous voyez ci-dessous'],
     },
+    captchaHandler: {
+      challenge: '.a-row > img',
+      input: '#captchacharacters',
+      submit: 'button[type="submit"]',
+    },
     inStock: {
       container: '#desktop_buybox',
       text: ['ajouter au panier'],
     },
     maxPrice: {
-      container: '#priceblock_ourprice',
+      container: '.a-text-price',
       euroFormat: true,
     },
     outOfStock: [
@@ -46,7 +51,7 @@ export const AmazonFr: Store = {
       brand: 'evga',
       model: 'ftw3',
       series: '3080',
-      url: 'https://www.amazon.fr/dp/B08HR3DPGW',
+      url: 'https://www.amazon.fr/dp/B08HGBYWQ6',
     },
     {
       brand: 'evga',

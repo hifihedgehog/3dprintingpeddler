@@ -2,7 +2,6 @@ import {existsSync, readFileSync} from 'fs';
 import {banner} from './banner';
 import dotenv from 'dotenv';
 import path from 'path';
-import * as console from 'console';
 
 if (process.env.npm_config_conf) {
   if (
@@ -16,6 +15,8 @@ if (process.env.npm_config_conf) {
   }
 } else if (existsSync(path.resolve(__dirname, '../../dotenv'))) {
   dotenv.config({path: path.resolve(__dirname, '../../dotenv')});
+} else if (existsSync(path.resolve(__dirname, '../dotenv'))) {
+  dotenv.config({path: path.resolve(__dirname, '../dotenv')});
 } else {
   dotenv.config({path: path.resolve(__dirname, '../../.env')});
 }
@@ -37,11 +38,12 @@ function envOrArray(
   environment: string | undefined,
   array?: string[]
 ): string[] {
-  return (environment
-    ? environment.includes('\n')
-      ? environment.split('\n')
-      : environment.split(',')
-    : array ?? []
+  return (
+    environment
+      ? environment.includes('\n')
+        ? environment.split('\n')
+        : environment.split(',')
+      : array ?? []
   ).map(s => s.trim());
 }
 
@@ -199,21 +201,48 @@ const browser = {
   userAgent: '',
 };
 
+const captchaHandler = {
+  captureType: envOrString(process.env.CAPTCHA_HANDLER_CAPTURE_TYPE),
+  pollInterval: envOrNumber(process.env.CAPTCHA_HANDLER_POLL_INTERVAL, 5),
+  responseTimeout: envOrNumber(
+    process.env.CAPTCHA_HANDLER_RESPONSE_TIMEOUT,
+    300
+  ),
+  service: envOrString(process.env.CAPTCHA_HANDLER_SERVICE),
+  token: envOrString(process.env.CAPTCHA_HANDLER_TOKEN),
+  userId: envOrString(process.env.CAPTCHA_HANDLER_USER_ID),
+};
+
 const docker = envOrBoolean(process.env.DOCKER, false);
 
 const logLevel = envOrString(process.env.LOG_LEVEL, 'info');
 
 const notifications = {
   desktop: process.env.DESKTOP_NOTIFICATIONS === 'true',
+  apns: {
+    apnsAuthKey: envOrString(process.env.APNS_AUTHKEY),
+    apnsKeyId: envOrString(process.env.APNS_KEYID),
+    apnsTeamId: envOrString(process.env.APNS_TEAMID),
+    apnsProduction: envOrBoolean(process.env.APNS_PRODUCTION),
+    apnsDeviceToken: envOrString(process.env.APNS_DEVICETOKEN),
+    apnsBundleId: envOrString(process.env.APNS_BUNDLEID),
+  },
   discord: {
     notifyGroup: envOrArray(process.env.DISCORD_NOTIFY_GROUP),
     notifyGroupSeries: {
+      3060: envOrArray(process.env.DISCORD_NOTIFY_GROUP_3060),
       '3060ti': envOrArray(process.env.DISCORD_NOTIFY_GROUP_3060TI),
       3070: envOrArray(process.env.DISCORD_NOTIFY_GROUP_3070),
+      '3070ti': envOrArray(process.env.DISCORD_NOTIFY_GROUP_3070TI),
       3080: envOrArray(process.env.DISCORD_NOTIFY_GROUP_3080),
+      '3080ti': envOrArray(process.env.DISCORD_NOTIFY_GROUP_3080TI),
       3090: envOrArray(process.env.DISCORD_NOTIFY_GROUP_3090),
+      '4080-12g': envOrArray(process.env.DISCORD_NOTIFY_GROUP_4080_12G),
+      '4080-16g': envOrArray(process.env.DISCORD_NOTIFY_GROUP_4080_16G),
+      4090: envOrArray(process.env.DISCORD_NOTIFY_GROUP_4090),
       'captcha-deterrent': [],
       darkhero: envOrArray(process.env.DISCORD_NOTIFY_GROUP_DARKHERO),
+      rx6700xt: envOrArray(process.env.DISCORD_NOTIFY_GROUP_RX6700XT),
       rx6800: envOrArray(process.env.DISCORD_NOTIFY_GROUP_RX6800),
       rx6800xt: envOrArray(process.env.DISCORD_NOTIFY_GROUP_RX6800XT),
       rx6900xt: envOrArray(process.env.DISCORD_NOTIFY_GROUP_RX6900XT),
@@ -239,6 +268,11 @@ const notifications = {
       envOrString(process.env.EMAIL_USERNAME)
     ),
     username: envOrString(process.env.EMAIL_USERNAME),
+  },
+  gotify: {
+    priority: envOrNumber(process.env.GOTIFY_PRIORITY),
+    token: envOrString(process.env.GOTIFY_TOKEN),
+    url: envOrString(process.env.GOTIFY_URL),
   },
   mqtt: {
     broker: envOrString(process.env.MQTT_BROKER_ADDRESS),
@@ -278,6 +312,7 @@ const notifications = {
       ['sprint', 'messaging.sprintpcs.com'],
       ['telus', 'msg.telus.com'],
       ['tmobile', 'tmomail.net'],
+      ['uscc', 'mms.uscc.net'],
       ['verizon', 'vtext.com'],
       ['virgin', 'vmobl.com'],
       ['virgin-ca', 'vmobile.ca'],
@@ -292,8 +327,10 @@ const notifications = {
     expire: envOrNumber(process.env.PUSHOVER_EXPIRE),
     priority: envOrNumber(process.env.PUSHOVER_PRIORITY),
     retry: envOrNumber(process.env.PUSHOVER_RETRY),
+    sound: envOrString(process.env.PUSHOVER_SOUND, 'pushover'),
     token: envOrString(process.env.PUSHOVER_TOKEN),
     username: envOrString(process.env.PUSHOVER_USER),
+    device: envOrString(process.env.PUSHOVER_DEVICE),
   },
   redis: {
     url: envOrString(process.env.REDIS_URL),
@@ -327,6 +364,17 @@ const notifications = {
     consumerSecret: envOrString(process.env.TWITTER_CONSUMER_SECRET),
     tweetTags: envOrString(process.env.TWITTER_TWEET_TAGS),
   },
+  streamlabs: {
+    accessToken: envOrString(process.env.STREAMLABS_ACCESS_TOKEN),
+    type: envOrString(process.env.STREAMLABS_TYPE),
+    imageHref: envOrString(process.env.STREAMLABS_IMAGE),
+    soundHref: envOrString(process.env.STREAMLABS_SOUND),
+    duration: envOrNumber(process.env.STREAMLABS_DURATION),
+  },
+  freemobile: {
+    id: envOrString(process.env.FREEMOBILE_ID),
+    apiKey: envOrString(process.env.FREEMOBILE_API_KEY),
+  },
 };
 
 const nvidia = {
@@ -338,6 +386,7 @@ const page = {
   height: 1080,
   inStockWaitTime: envOrNumber(process.env.IN_STOCK_WAIT_TIME),
   screenshot: envOrBoolean(process.env.SCREENSHOT),
+  screenshotDir: envOrString(process.env.SCREENSHOT_DIR, 'screenshots'),
   timeout: envOrNumber(process.env.PAGE_TIMEOUT, 30000),
   width: 1920,
 };
@@ -360,12 +409,23 @@ const store = {
   country: envOrString(process.env.COUNTRY, 'usa'),
   maxPrice: {
     series: {
+      3050: envOrNumber(process.env.MAX_PRICE_SERIES_3050),
+      3060: envOrNumber(process.env.MAX_PRICE_SERIES_3060),
       '3060ti': envOrNumber(process.env.MAX_PRICE_SERIES_3060TI),
       3070: envOrNumber(process.env.MAX_PRICE_SERIES_3070),
+      '3070ti': envOrNumber(process.env.MAX_PRICE_SERIES_3070TI),
       3080: envOrNumber(process.env.MAX_PRICE_SERIES_3080),
+      '3080ti': envOrNumber(process.env.MAX_PRICE_SERIES_3080TI),
       3090: envOrNumber(process.env.MAX_PRICE_SERIES_3090),
+      '4080-12g': envOrNumber(process.env.MAX_PRICE_SERIES_4080_12G),
+      '4080-16g': envOrNumber(process.env.MAX_PRICE_SERIES_4080_16G),
+      4090: envOrNumber(process.env.MAX_PRICE_SERIES_4090),
       'captcha-deterrent': 0,
       darkhero: envOrNumber(process.env.MAX_PRICE_SERIES_DARKHERO),
+      'g4-doorbell-pro': envOrNumber(
+        process.env.MAX_PRICE_SERIES_G4_DOORBELL_PRO
+      ),
+      rx6700xt: envOrNumber(process.env.MAX_PRICE_SERIES_RX6700XT),
       rx6800: envOrNumber(process.env.MAX_PRICE_SERIES_RX6800),
       rx6800xt: envOrNumber(process.env.MAX_PRICE_SERIES_RX6800XT),
       rx6900xt: envOrNumber(process.env.MAX_PRICE_SERIES_RX6900XT),
@@ -377,6 +437,11 @@ const store = {
       sonyps5c: envOrNumber(process.env.MAX_PRICE_SERIES_SONYPS5C),
       sonyps5de: envOrNumber(process.env.MAX_PRICE_SERIES_SONYPS5DE),
       'test:series': envOrNumber(process.env.MAX_PRICE_SERIES_TEST),
+      'udm-pro': envOrNumber(process.env.MAX_PRICE_SERIES_UDM_PRO),
+      'udm-us': envOrNumber(process.env.MAX_PRICE_SERIES_UDM_US),
+      'udr-us': envOrNumber(process.env.MAX_PRICE_SERIES_UDR_US),
+      unvr: envOrNumber(process.env.MAX_PRICE_SERIES_UNVR),
+      'unvr-pro': envOrNumber(process.env.MAX_PRICE_SERIES_UNVR_PRO),
       xboxss: envOrNumber(process.env.MAX_PRICE_SERIES_XBOXSS),
       xboxsx: envOrNumber(process.env.MAX_PRICE_SERIES_XBOXSX),
     },
@@ -391,10 +456,15 @@ const store = {
     };
   }),
   showOnlySeries: envOrArray(process.env.SHOW_ONLY_SERIES, [
+    '3060',
     '3060ti',
     '3070',
+    '3070ti',
     '3080',
+    '3080ti',
     '3090',
+    'g4-doorbell-pro',
+    'rx6700xt',
     'rx6800',
     'rx6800xt',
     'rx6900xt',
@@ -405,6 +475,11 @@ const store = {
     'sf',
     'sonyps5c',
     'sonyps5de',
+    'udm-pro',
+    'udm-us',
+    'udr-us',
+    'unvr',
+    'unvr-pro',
     'xboxss',
     'xboxsx',
   ]),
@@ -434,6 +509,8 @@ const store = {
   }),
 };
 
+const restartTime = envOrNumber(process.env.RESTART_TIME, 0);
+
 export const defaultStoreData = {
   maxPageSleep: browser.maxSleep,
   minPageSleep: browser.minSleep,
@@ -441,6 +518,7 @@ export const defaultStoreData = {
 
 export const config = {
   browser,
+  captchaHandler,
   docker,
   logLevel,
   notifications,
@@ -448,6 +526,7 @@ export const config = {
   page,
   proxy,
   store,
+  restartTime,
 };
 
 export function setConfig(newConfig: any) {

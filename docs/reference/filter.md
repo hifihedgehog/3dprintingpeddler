@@ -2,35 +2,38 @@
 
 | Environment variable | Description |
 |:---:|---|
-| `COUNTRY` | [Supported country](#supported-countries) you want to be scraped | Only used with `nvidia-api`, default: `usa` |
+| `MAX_PRICE_SERIES_3060` | Maximum price allowed for a match, applies 3060 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
 | `MAX_PRICE_SERIES_3060TI` | Maximum price allowed for a match, applies 3060 Ti series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
 | `MAX_PRICE_SERIES_3070` | Maximum price allowed for a match, applies 3070 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
 | `MAX_PRICE_SERIES_3080` | Maximum price allowed for a match, applies 3080 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
+| `MAX_PRICE_SERIES_3080TI` | Maximum price allowed for a match, applies 3080 Ti series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
 | `MAX_PRICE_SERIES_3090` | Maximum price allowed for a match, applies 3090 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
+| `MAX_PRICE_SERIES_4080_12G` | Maximum price allowed for a match, applies 4080 12G series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
+| `MAX_PRICE_SERIES_4080_16G` | Maximum price allowed for a match, applies 4080 16G series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
+| `MAX_PRICE_SERIES_4090` | Maximum price allowed for a match, applies 4090 series cards (does not apply to these sites: Nvidia, Asus, EVGA) |
 | `MAX_PRICE_SERIES_CORSAIR_SF` | Maximum price allowed for a match, applies to Corsair PSUs |
 | `MAX_PRICE_SERIES_DARKHERO` | Maximum price allowed for a match, applies to ASUS Dark Hero motherboards |
 | `MAX_PRICE_SERIES_RYZEN5600` | Maximum price allowed for a match, applies AMD 5600 series cpus |
 | `MAX_PRICE_SERIES_RYZEN5800` | Maximum price allowed for a match, applies AMD 5800 series cpus |
 | `MAX_PRICE_SERIES_RYZEN5900` | Maximum price allowed for a match, applies AMD 5900 series cpus |
 | `MAX_PRICE_SERIES_RYZEN5950` | Maximum price allowed for a match, applies AMD 5950 series cpus |
+| `MAX_PRICE_SERIES_RX6700XT` | Maximum price allowed for a match, applies AMD RX 6700 XT |
 | `MAX_PRICE_SERIES_RX6800` | Maximum price allowed for a match, applies AMD RX 6800 |
 | `MAX_PRICE_SERIES_RX6800XT` | Maximum price allowed for a match,applies AMD RX 6800 XT |
 | `MAX_PRICE_SERIES_RX6900XT` | Maximum price allowed for a match, applies AMD RX 6900 XT |
 | `MAX_PRICE_SERIES_SONYPS5C` | Maximum price allowed for a match, applies PS5 console |
 | `MAX_PRICE_SERIES_SONYPS5DE` | Maximum price allowed for a match, applies PS5 digital edition |
-| `MAX_PRICE_SERIES_XBOXSS` | Maximum price allowed for a match, applies PS5 digital edition |
-| `MAX_PRICE_SERIES_XBOXSX` | Maximum price allowed for a match, applies PS5 digital edition |
+| `MAX_PRICE_SERIES_XBOXSS` | Maximum price allowed for a match, applies Xbox Series S |
+| `MAX_PRICE_SERIES_XBOXSX` | Maximum price allowed for a match, applies Xbox Series X |
 | `MAX_PRICE_SERIES_TEST` | Maximum price allowed for a match, applies `test:series` |
 | `MICROCENTER_LOCATION` | Specific MicroCenter location(s) to search. Comma separated, e.g.: `marietta,duluth`, default: `web` |
-| `NVIDIA_ADD_TO_CART_ATTEMPTS` | The maximum number of times the `nvidia-api` add to cart feature will be attempted before failing. Default: `10` |
-| `NVIDIA_SESSION_TTL` | The time in milliseconds to keep the cart active while using `nvidia-api`. Default: `60000` |
 | `SHOW_ONLY_BRANDS` | Filter to show specified brands. Comma separated, e.g.: `evga,zotac` |
 | `SHOW_ONLY_MODELS` | Filter to show specified models. Comma separated, can include series. E.g.: `founders edition:3090,rog strix` |
 | `SHOW_ONLY_SERIES` | Filter to show specified series. Comma separated, e.g.: `3080,ryzen5900` |
 | `STORES` | [Supported stores](#supported-stores) you want to be scraped. Default: `amazon,bestbuy`. Comma separated, can include `PAGE_SLEEP_MIN` and `PAGE_SLEEP_MAX` values. E.g.: `amazon:10000:30000,bestbuy,newegg:50000:80000`. |
 
 ???+ note
-    For `MAX_PRICE_SERIES_*` variables: enter a price (enter whole dollar amounts only, avoid use of: dollar symbols, commas, and periods). E.g.: `1234`. Merchandise found above this price will be skipped.
+    For `MAX_PRICE_SERIES_*` variables: Use whole numbers only (no currency symbol is required). Avoid using any commas or decimal points. Example: `1234`. Merchandise found above this price will be skipped.
 
 ## Supported stores
 
@@ -42,7 +45,7 @@ Used with the `STORES` variable.
 | Adorama | US | `adorama`|
 | Akinformatica | IT | `akinformatica`|
 | Allneeds | AU | `allneeds`|
-| Alternate | DE | `alternate`|
+| Alternate | DE | `alternate-de`|
 | Alternate | NL | `alternate-nl`|
 | Amazon | US | `amazon`|
 | Amazon | CA | `amazon-ca`|
@@ -55,17 +58,22 @@ Used with the `STORES` variable.
 | Amazon | SG | `amazon-sg`|
 | Amazon | UK | `amazon-uk`|
 | AMD | US | `amd`|
+| AMD | AT | `amd-at`|
+| AMD | BE | `amd-be`|
 | AMD | CA | `amd-ca`|
 | AMD | DE | `amd-de`|
 | AMD | IT | `amd-it`|
+| AMD | NL | `amd-nl`|
 | AMD | UK | `amd-uk`|
 | AntOnline | US | `antonline`|
+| AO | UK | `ao`|
 | Argos | UK | `argos`|
 | Argos | IE | `argos-ie`|
 | Aria PC | UK | `aria`|
 | ARLT | DE | `arlt`|
 | ASUS | US | `asus` |
 | ASUS | DE | `asus-de` |
+| ASUS | ES | `asus-es` |
 | AWD-IT | UK | `awd` |
 | Azerty | NL | `azerty`|
 | B&H | US | `bandh`|
@@ -74,6 +82,7 @@ Used with the `STORES` variable.
 | Box | UK | `box`|
 | BPCTech | AU | `bpctech`|
 | BPM-Power | IT | `bpm-power`|
+| BT | UK | `bt`|
 | CanadaComputers | CA | `canadacomputers` |
 | Caseking | DE | `caseking`|
 | CCL | UK | `ccl`|
@@ -88,61 +97,83 @@ Used with the `STORES` variable.
 | CPL | AU | `cpl`|
 | Currys | UK | `currys`|
 | Cyberport | DE | `cyberport` |
+| Cyberport | AT | `cyberport-at` |
 | DComp | AU | `dcomp`|
 | Drako | IT | `drako` |
-| EBGames | CA | `ebgames`|
+| DustinHome | NO | `dustinhome-no` |
 | eBuyer | UK | `ebuyer`|
 | El Corte Inglés | ES | `elcorteingles`|
+| Eletronicamente | ES | `eletronicamente`|
+| Elkjop | NO | `elkjop`|
 | ePrice | IT | `eprice`|
+| Equippr | DE | `equippr`|
 | Euronics | IT | `euronics`|
 | Euronics | DE | `euronics-de`|
-| Equippr | DE | `equippr`|
 | Evatech | AU |  `evatech`|
 | EVGA | US | `evga`|
 | EVGA | EU | `evga-eu`|
 | Expert | DE | `expert`|
+| Extremmedia | ES | `extremmedia`|
 | Futurex | DE | `futurex`|
 | Galaxus | DE | `galaxus`|
+| Game | ES | `game-es`|
 | Game | UK | `game`|
 | Gamestop | US | `gamestop`|
+| Gamestop | CA | `gamestop-ca`|
 | Gamestop | DE | `gamestop-de`|
 | Gamestop | IE | `gamestop-ie`|
 | Gamestop | IT | `gamestop-it`|
+| Globaldata | PT | `globaldata`|
+| Hardware Planet | IT | | `hardware-planet` |
 | HarrisTechnology | AU |  `harristechnology`|
 | Harvey Normans | IE | `harveynorman-ie` |
-| Hardware Planet | IT | | `hardware-planet` |
 | iGame Computer | AU |  `igame-computer`|
 | John Lewis | UK | `johnlewis`|
 | Kabum | BR | `kabum`|
+| Komplett | NO | `komplett-no`|
 | Landmark Computers | AU |  `landmark-computers`|
+| Ldlc | FR |  `ldlc`|
+| Ldlc | ES |  `ldlc-es`|
+| Ldlc | IT |  `ldlc-it`|
 | Mediamarkt | DE | `mediamarkt`|
+| Mediamarkt | AT | `mediamarkt-at`|
 | Medimax | DE | `medimax`|
 | Megekko | NL | `megekko`|
 | MemoryExpress | CA | `memoryexpress`|
+| Materiel | FR | `materiel` |
 | Micro Center | US | `microcenter`|
+| MightyApe | NZ | `mightyape`|
 | Mindfactory | DE | `mindfactory` |
 | MSY | AU |  `msy`|
+| Multicom | NO |  `multicom`|
 | Mwave | AU | `mwave`|
+| Neobyte | ES | `neobyte`|
+| Netonnet | NO | `netonnet-no`|
 | Newegg | US | `newegg`|
 | Newegg | CA | `newegg-ca`|
 | Newegg | SG | `newegg-sg`|
+| NoelLeeming | NZ | `noelleeming`|
 | Notebooksbilliger | DE |`notebooksbilliger`|
 | Novatech | UK | `novatech`|
-| Nvidia | US | `nvidia`|
-| Nvidia API | | `nvidia-api`|
+| Novo Atalho | PT | `novoatalho`|
+| Nvidia | EU/UK | [See below](#nvidia-store-reference) |
 | Office Depot | US | `officedepot`|
 | Ollo | IT | `ollo`|
+| Opirata | ES | `opirata`|
 | Otto | DE | `otto`|
 | Overclockers | UK | `overclockers`|
 | PBTech | AU |  `pbtech`|
 | PCByte | AU |  `pcbyte`|
 | PCCG | AU | `pccg`|
 | PCComponentes | ES | `pccomponentes`|
+| PCDiga | PT | `pcdiga`|
 | PCKing | DE | `pcking` |
 | PlayStation | US | `playstation`|
 | PNY | US | `pny`|
+| Power | NO | `power-no`|
 | Proshop | DE | `proshop-de`|
 | Proshop | DK | `proshop-dk`|
+| Proshop | NO | `proshop-no`|
 | Rosman | AU |  `rosman`|
 | Rosman-Melb | AU |  `rosman-melb`|
 | Saturn | DE | `saturn`|
@@ -150,13 +181,17 @@ Used with the `STORES` variable.
 | Scan | UK | `scan`|
 | Scorptec | AU | `scorptec`|
 | ShopTo | UK | `shopto`|
+| Siabyte | ES | `siabyte`|
 | Smyths Toys | UK | `smythstoys`|
 | Smyths Toys | IE | `smythstoys-ie`|
 | Spielegrotte | DE | `spielegrotte`|
 | Storm Computers | AU |  `storm-computer`|
 | Target | US | `target`|
 | Tesco | IE | `tesco-ie`|
+| TheWarehouse | NZ | `thewarehouse`|
+| TopAchat | GR | `topachat`|
 | Toys R Us | US | `toysrus` |
+| Ultimainformatica | ES | `ultimainformatica`|
 | Umart | AU | `umart`|
 | Unieuro | IT | `unieuro`|
 | Very | UK | `very`|
@@ -166,7 +201,6 @@ Used with the `STORES` variable.
 | Wells Technology | AU |  `wellstechnology`|
 | Wipoid | ES | `wipoid`|
 | Zotac | US | `zotac`|
-| TopAchat | GR | `topachat`|
 
 ### Micro Center stores
 
@@ -196,7 +230,7 @@ Used with the `SHOW_ONLY_BRANDS` and `SHOW_ONLY_MODELS` variables.
 | `corsair` | `750 platinum`, `600 platinum`, `600 gold` |
 | `colorful` | `igame advanced oc`, `igame vulcan oc` |
 | `evga` | `ftw3`, `ftw3 black`, `ftw3 ultra`, `ftw3 ultra hybrid`, `ftw3 ultra hydro copper`, `xc3`, `xc black`, `xc gaming`, `xc3 black`, `xc3 ultra`, `xc3 ultra hybrid` |
-| `gainward` | `phantom gs`, `phoenix`, `phoenix gs`, `phoenix gs oc` |
+| `gainward` | `phantom gs`, `phoenix`, `phoenix gs`, `phoenix gs oc`, `ghost` |
 | `gigabyte` | `aorus master`, `aorus xtreme`, `aorus xtreme waterforce`, `aorus xtreme waterforce wb`, `eagle`, `eagle oc`, `gaming`, `gaming oc`, `gaming oc pro`, `turbo`, `vision`, `vision oc` |
 | `galax` | `sg`, `sg oc` |
 | `inno3d` | `gaming x3`, `ichill x3`, `ichill x4`, `ichill frostbite`, `twin x2`, `twin x2 oc` |
@@ -209,7 +243,7 @@ Used with the `SHOW_ONLY_BRANDS` and `SHOW_ONLY_MODELS` variables.
 | `pny` | `dual fan`, `xlr8 epic x`, `xlr8 revel`, `xlr8 uprising` |
 | `sony` | `ps5 console`, `ps5 digital` |
 | `xfx` | `merc`, `amd reference` |
-| `zotac` | `amp holo`, `amp extreme holo`, `trinity`, `trinity oc`, `twin edge`, `twin edge oc`, `twin edge oc white` |
+| `zotac` | `amp holo`, `amp extreme holo`, `amp white`, `trinity`, `trinity oc`, `twin edge`, `twin edge oc`, `twin edge oc white` |
 
 ## Supported series
 
@@ -221,13 +255,19 @@ Used with the `SHOW_ONLY_SERIES` variable.
 | AMD Ryzen 5800x | `ryzen5800` |
 | AMD Ryzen 5900x | `ryzen5900` |
 | AMD Ryzen 5950x | `ryzen5950` |
+| AMD RX 6700XT | `rx6700xt` |
 | AMD RX 6800 | `rx6800` |
 | AMD RX 6800XT | `rx6800xt` |
 | AMD RX 6900XT | `rx6900xt` |
+| Nvidia RTX 3060 | `3060` |
 | Nvidia RTX 3060 Ti | `3060ti` |
 | Nvidia RTX 3070 | `3070` |
 | Nvidia RTX 3080 | `3080` |
+| Nvidia RTX 3080 Ti | `3080ti` |
 | Nvidia RTX 3090 | `3090` |
+| Nvidia RTX 4080 12G | `4080-12g` |
+| Nvidia RTX 4080 16G | `4080-16g` |
+| Nvidia RTX 4090 | `4090` |
 | Corsair SFX PSU | `sf` |
 | Crosshair VIII | `darkhero` |
 | Sony PS5 | `sonyps5c` |
@@ -235,32 +275,21 @@ Used with the `SHOW_ONLY_SERIES` variable.
 | Xbox Series S | `xboxss` |
 | Xbox Series X | `xboxsx` |
 
-## Supported countries
+## Nvidia Store Reference
 
-Used with the `COUNTRY` variable.
+???+ note
+    Use the Nvidia Store to check stock for Founders Edition cards only (3060 Ti/3070/3080/3080 Ti/3090/4090). For USA use `bestbuy` instead.
 
-???+ attention
-    Used _only_ with `nvidia` and `nvidia-api`.
+???+ info
+    Use the `STORE` variable for your chosen country. For example, to check for a FE card in Belgium you would use the `nvidia-fr` store.
 
-| Country | 3080 FE | 3090 FE | Test Card | Notes |
-|:---:|:---:|:---:|:---:|:---:|
-| `austria` | `✔` | `✔` | `✔` | |
-| `belgium` | `✔` | `✔` | `✔` | |
-| `canada` | `✔` | `✔` | `✔` | |
-| `czechia` | `✔` | `✔` | `✔` | |
-| `denmark` | `✔` | | `✔` | Missing RTX 3090 |
-| `finland` | `✔` | | `✔` | Missing RTX 3090 |
-| `france` | `✔` | `✔` | `✔` | |
-| `germany` | `✔` | `✔` | `✔` | |
-| `great_britain` | `✔` | `✔` | `✔` | |
-| `ireland` | `✔` | `✔` | `✔` | |
-| `italy` | `✔` | `✔` | `✔` | |
-| `luxembourg` | `✔` | `✔` | `✔` | |
-| `netherlands` | `✔` | `✔` | `✔` | |
-| `norway` | `✔` | `✔` | `✔` | |
-| `poland` | `✔` | `✔` | `✔` | |
-| `portugal` | `✔` | | | RTX 3080 only |
-| `spain` | `✔` | `✔` | `✔` | |
-| `sweden` | `✔` | `✔` | `✔` | |
-| `usa` | `✔` | `✔` | `✔` | |
-
+| Country | Store | Retailer
+|:---:|:---:|:---:|
+| Austria | `nvidia-de`| NBB |
+| Belgium | `nvidia-fr` | LDLC |
+| France | `nvidia-fr` | LDLC |
+| Germany | `nvidia-de` | NBB |
+| Ireland | `nvidia-gb` | Scan |
+| Luxembourg | `nvidia-fr` | LDLC |
+| Spain | `nvidia-es` | LDLC |
+| United Kingdom | `nvidia-gb` | Scan |
